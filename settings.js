@@ -46,6 +46,15 @@ class settings {
         subcategory: "QOL",
     })
     ChatCleaner = false;
+
+    
+    @TextProperty({
+        name: "Delay between orders placed",
+        description: "Write in miliseconds",
+        category: "Bazaar flipper",
+        subcategory: "QOL"
+    })
+    delay = ""
     
     @SwitchProperty({
         name: "Order fill/sell alerts",
