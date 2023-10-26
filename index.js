@@ -90,7 +90,7 @@ register("Tick", () => {
     lastOrderCheck = new Date().getTime()
     lastCleanCheck = new Date().getTime()
     let currentTime = new Date().getTime();
-    if(lastOrderCheck - lastOrderTime > 300000) {
+    if(lastOrderCheck - lastOrderTime > parseInt(settings.delay)) {
         if(maxOrders) return
         let randomItem = items[Math.floor(Math.random()*items.length)];
         placeOrder(randomItem)
@@ -150,12 +150,12 @@ register('chat', (e) => {
 const display = new Display();
 display.setAlign("left")
 display.setBackgroundColor(Renderer.BLACK);
-display.setLine(1, ` Time until next order: ${(lastOrderCheck - 300000) / 1000}s`)
+display.setLine(1, ` Time until next order: ${(lastOrderCheck - parseInt(settings.delay)) / 1000}s`)
 display.setLine(2, ` Total profit this session: ${totalProfit}`)
 
 register("Tick", () => {
     let currentTime = new Date().getTime();
-    let timeRemaining = lastOrderTime + 300000 - currentTime;
+    let timeRemaining = lastOrderTime + parseInt(settings.delay) - currentTime;
     display.setLine(1, ` Time until next order: ${Math.round(timeRemaining / 1000)}s`)
     display.setLine(2, ` Time until next clean: ${Math.round((lastCleanTime + 700000 - currentTime) / 1000)}s`)
     display.setLine(3, ` Total profit this session: ${totalProfit}`)
