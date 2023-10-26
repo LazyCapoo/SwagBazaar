@@ -8,8 +8,6 @@ const ChatComponentText = Java.type("net.minecraft.util.ChatComponentText");
 
 export function placeOrder(path) {
     
-    // if(kicked) return;
-    // if (Client.currentGui.get() !== null) return;
     new Thread(() => {
         ChatLib.say("/bz")
         Thread.sleep(700)
@@ -17,6 +15,9 @@ export function placeOrder(path) {
             Player.getContainer().click(path[i], false, "MIDDLE")
             Thread.sleep(700)
         }
+        Player.getContainer().click(15, false, "MIDDLE")
+        Thread.sleep(700)
+        Player.getContainer().click(16, false, "MIDDLE")
         if (Client.currentGui.getClassName() === "GuiEditSign") {
             Thread.sleep(700)
             let currentTileSign = tileSign.get(Client.currentGui.get());
